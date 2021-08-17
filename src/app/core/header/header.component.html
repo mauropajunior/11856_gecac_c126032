@@ -1,0 +1,24 @@
+<header class="fixed-top">
+  <nav class="navbar navbar-light bg-white">
+    <a class="navbar-brand">
+      <i
+        tabindex="0"
+        (keyup.space)="menu.toggle()"
+        (click)="menu.toggle()"
+        class="fa fa-bars mr-2"
+      ></i>
+      Dashboard GECAC
+    </a>
+    <painel-menu #menu>
+      <ul class="list-unstyled">
+        <li>
+          <a [routerLink]="['graficos','']">Item 1</a>
+        </li>
+      </ul>
+    </painel-menu>
+  </nav>
+  <div class="fixed-top">
+    <painel-loading></painel-loading>
+    <painel-alert></painel-alert>
+  </div>
+</header>

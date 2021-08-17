@@ -1,0 +1,82 @@
+<div class="">
+  <mat-form-field>
+    <input
+      matInput
+      (keyup)="applyFilter($event.target.value)"
+      placeholder="Filtro"
+    />
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table [dataSource]="dataSource" matSort>
+    <!-- Coluna Produto -->
+    <ng-container matColumnDef="produto">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Produto
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.produto}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna Nome -->
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Nome
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.nome}}% </mat-cell>
+    </ng-container>
+
+    <!-- Coluna Exposição -->
+    <ng-container matColumnDef="exposicao">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Exposição (R$)
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.exposicao}} </mat-cell>
+    </ng-container>
+
+    <!-- Coluna Provisão -->
+    <ng-container matColumnDef="provisao">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Provisão (R$)
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="row.color">
+        {{row.provisao}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Coluna Provisão (%) -->
+    <ng-container matColumnDef="provisaoPercent">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Provisão (%)
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="row.color">
+        {{row.provisaoPercent}}
+      </mat-cell>
+    </ng-container>
+
+    <-- Coluna Prazo Médio -->
+    <ng-container matColumnDef="prazoMedio">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Prazo Médio (Meses)
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="row.color">
+        {{row.prazoMedio}}
+      </mat-cell>
+    </ng-container>
+
+    <-- Coluna Tícket Médio ->
+    <ng-container matColumnDef="ticketMedio">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Tícket Médio (R$)
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="row.color">
+        {{row.ticketMedio}}
+      </mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"> </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+</div>
